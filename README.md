@@ -20,5 +20,6 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 
 =================================================================================
 * ### Django
+* Instalação
     * Usando pip
         > pip install django==1.11
