@@ -101,5 +101,4 @@ ENV/
 .mypy_cache/
 
 .vscode/
-.sqlite3
-.pyc
+#.sqlite3
