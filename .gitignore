@@ -102,3 +102,4 @@ ENV/
 
 .vscode/
 cEventos/db.sqlite3
+migrations/
