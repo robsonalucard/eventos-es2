@@ -101,5 +101,10 @@ ENV/
 .mypy_cache/
 
 .vscode/
-cEventos/db.sqlite3
-migrations/
+*.sqlite3
+*.db
+pip-selfcheck.json
+*.pyc
+*.pyo
+bin
+include
