@@ -101,6 +101,7 @@ ENV/
 .mypy_cache/
 
 .vscode/
+.idea/
 *.sqlite3
 *.db
 pip-selfcheck.json
