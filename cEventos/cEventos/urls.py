@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from cEventos.core import views
 
 urlpatterns = [
+    url(r'^$', views.home, name='core'),
     url(r'^admin/', admin.site.urls),
-    #url(r'^$', ),
 ]
