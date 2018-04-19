@@ -39,14 +39,14 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 
 =================================================================================
 
-3. ### Django-jquery
+3. ### Bootstrap
+	* [Download Source files](https://github.com/twbs/bootstrap/archive/v4.0.0.zip)
+
+=================================================================================
+
+4. ### Django-jquery
 * Instalação
     * Usando pip
         >pip install django-jquery
 * Documentação Completa em:
 	* [Documentação Django-jquery](https://pypi.org/project/django-jquery)
-
-=================================================================================
-
-4. ### Bootstrap
-	* [Download Source files](https://github.com/twbs/bootstrap/archive/v4.0.0.zip)
