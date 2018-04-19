@@ -21,7 +21,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 
 ## DEPENDÊNCIAS:
 
-1. ### Django
+### 1. Django
 * Instalação
     * Usando pip
         >pip install django==1.11
@@ -30,7 +30,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 
 =================================================================================
 
-2. ### Widget Tweaks
+### 2. Widget Tweaks
 * Instalação
     * Usando pip
         >pip install django-widget-tweaks
@@ -39,12 +39,12 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 
 =================================================================================
 
-3. ### Bootstrap
+### 3. Bootstrap
 	* [Download Source files](https://github.com/twbs/bootstrap/archive/v4.0.0.zip)
 
 =================================================================================
 
-4. ### Django-jquery
+### 4. Django-jquery
 * Instalação
     * Usando pip
         >pip install django-jquery
