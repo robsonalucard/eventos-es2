@@ -38,6 +38,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Widget Tweaks](https://pypi.python.org/pypi/django-widget-tweaks)
 
 =================================================================================
+
 3. ### Django-jquery
 * Instalação
     * Usando pip
@@ -46,5 +47,6 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Django-jquery](https://pypi.org/project/django-jquery)
 
 =================================================================================
+
 4. ### Bootstrap
 	* [Download Source files](https://github.com/twbs/bootstrap/archive/v4.0.0.zip)
