@@ -10,7 +10,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 * ### Virtualenvwrapper para Windows
 * Instalação
     * Usando pip
-        > pip install virtualenvwrapper-win
+        >pip install virtualenvwrapper-win
 * Criação do Ambiente Virtual 
 	>mkvirtualenv [Nome do Ambiente]
 * Ativação do Ambiente Virtual 
@@ -22,7 +22,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 * ### Django
 * Instalação
     * Usando pip
-        > pip install django==1.11
+        >pip install django==1.11
 * Documentação Completa em:
 	* [Documentação Django](https://docs.djangoproject.com/pt-br/1.11/)
 
@@ -30,9 +30,17 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 * ### Widget Tweaks
 * Instalação
     * Usando pip
-        > pip install django-widget-tweaks
+        >pip install django-widget-tweaks
 * Documentação Completa em:
 	* [Documentação Widget Tweaks](https://pypi.python.org/pypi/django-widget-tweaks)
+
+=================================================================================
+* ### Django-jquery
+* Instalação
+    * Usando pip
+        >pip install django-jquery
+* Documentação Completa em:
+	* [Documentação Django-jquery](https://pypi.org/project/django-jquery)
 
 =================================================================================
 * ### Bootstrap
