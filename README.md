@@ -29,6 +29,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Django](https://docs.djangoproject.com/pt-br/1.11/)
 
 =================================================================================
+
 2. ### Widget Tweaks
 * Instalação
     * Usando pip
