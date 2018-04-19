@@ -4,7 +4,6 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 ## Instalação
 * ### Python 3.6.4
 	* [Instalador .exe - Windows](https://www.python.org/ftp/python/3.6.4/python-3.6.4-amd64.exe)
-	* Nativo para Linux
 
 =================================================================================
 * ### Virtualenvwrapper para Windows
