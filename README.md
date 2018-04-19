@@ -18,9 +18,10 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper-win)
 
 =================================================================================
-##**DEPENDÊNCIAS:**
 
-* ### Django
+## DEPENDÊNCIAS:
+
+1. ### Django
 * Instalação
     * Usando pip
         >pip install django==1.11
@@ -28,7 +29,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Django](https://docs.djangoproject.com/pt-br/1.11/)
 
 =================================================================================
-* ### Widget Tweaks
+2. ### Widget Tweaks
 * Instalação
     * Usando pip
         >pip install django-widget-tweaks
@@ -36,7 +37,7 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Widget Tweaks](https://pypi.python.org/pypi/django-widget-tweaks)
 
 =================================================================================
-* ### Django-jquery
+3. ### Django-jquery
 * Instalação
     * Usando pip
         >pip install django-jquery
@@ -44,5 +45,5 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Django-jquery](https://pypi.org/project/django-jquery)
 
 =================================================================================
-* ### Bootstrap
+4. ### Bootstrap
 	* [Download Source files](https://github.com/twbs/bootstrap/archive/v4.0.0.zip)
