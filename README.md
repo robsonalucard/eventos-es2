@@ -18,6 +18,8 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 	* [Documentação Virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper-win)
 
 =================================================================================
+##**DEPENDÊNCIAS:**
+
 * ### Django
 * Instalação
     * Usando pip
