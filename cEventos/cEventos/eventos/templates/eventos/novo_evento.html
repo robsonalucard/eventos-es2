@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% load widget_tweaks %}
+<div class="row">
+    {% block body %}
+    <p>
+        <center>
+            <h1>Novo Evento</h1>
+        </center>
+    </p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.titulo.id_for_label }}">Título</label>
+            {{ form.titulo|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.local.id_for_label }}">Local</label>
+            {{ form.local|add_class:"form-control" }}
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="{{ form.uf.id_for_label }}">UF</label>
+                {{ form.uf|add_class:"form-control" }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="{{ form.cidade.id_for_label }}">Cidade</label>
+                {{ form.cidade|add_class:"form-control" }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+            {{ form.descricao|add_class:"form-control" }}
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="{{ form.data_inicial.id_for_label }}">Data Inicial</label>
+                <input type="date" name="data_inicial" id="form.data_inicial" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="{{ form.data_final.id_for_label }}">Data Final</label>
+                <input type="date" name="data_final" id="form.data_final" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+
+    {% endblock body %}
+</div>

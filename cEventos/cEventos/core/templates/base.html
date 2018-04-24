@@ -32,9 +32,14 @@
                         <a class="nav-link" href="{% url 'core' %}">Home
                             <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'eventos:lista_eventos' %}">Eventos</a>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="{% url 'eventos:novo_evento' %}">Novo Evento</a>
+                            <a class="dropdown-item" href="{% url 'eventos:lista_eventos' %}">Listar Eventos</a>
+                        </div>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
@@ -46,22 +51,26 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
+                     -->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar Eventos" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>
         </nav>
 
         
-        {% block body %}
-            
-        {% endblock body %}
+        <div class="container">
+            {% block body %}
 
-        <footer class="container">
-            <p>&copy; Company 2017-2018</p>
-        </footer>
+            
+            {% endblock body %}
+        </div>
+            
+        <hr>
+        <center><p>&copy; Company 2017-2018</p></center>
+        
 
         <!-- Bootstrap core JavaScript ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

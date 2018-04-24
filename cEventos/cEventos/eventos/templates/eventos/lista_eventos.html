@@ -1,32 +1,35 @@
-{% extends "base.html" %} {% block body %}
-<p>
-    <center>
-        <h1>Eventos</h1>
-    </center>
-</p>
-{% if eventos %}
-<table class="table">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Local</th>
-        </tr>
-        <tbody>
-            {% for e in eventos %}
+{% extends "base.html" %}
+<div class="row">
+    {% block body %}
+    <p>
+        <center>
+            <h1>Eventos</h1>
+        </center>
+    </p>
+    {% if eventos %}
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    {{e.titulo}}
-                </td>
-                <td>
-                    {{ e.local }}
-                </td>
+                <th>Título</th>
+                <th>Local</th>
             </tr>
-            {% endfor %}
-        </tbody>
-    </thead>
-</table>
-{% else %}
-<center>
-    <h4>Sem Eventos</h4>
-</center>
-{% endif %} {% endblock body %}
+            <tbody>
+                {% for e in eventos %}
+                <tr>
+                    <td>
+                        {{e.titulo}}
+                    </td>
+                    <td>
+                        {{ e.local }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </thead>
+    </table>
+    {% else %}
+    <center>
+        <h4>Sem Eventos</h4>
+    </center>
+    {% endif %} {% endblock body %}
+</div>
