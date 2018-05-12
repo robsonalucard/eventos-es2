@@ -17,11 +17,12 @@
         <link href="{% static "css/jumbotron.css" %}" rel="stylesheet">
     </head>
 
-    <body>
+    <body style="background-color:rgb(250, 250, 250)">
 
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a href="{% url 'core' %}"><img src="{% static "img/wolf2.png" %}" alt="Wolf" width="42" height="42"></a>            
-            <pre> </pre><a class="navbar-brand" href="{% url 'core' %}">Caça Eventos</a>
+            <a href="{% url 'core' %}"><img src="{% static "img/wolf2.png" %}" alt="Wolf" width="42" height="42"></a>
+            <pre> </pre>
+            <a class="navbar-brand" href="{% url 'core' %}">Caça Eventos</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,19 +40,9 @@
                             <a class="dropdown-item" href="{% url 'eventos:lista_eventos' %}">Listar Eventos</a>
                         </div>
                     </li>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                     -->
+                    <!-- <li class="nav-item"> <a class="nav-link disabled" href="#">Disabled</a> </li> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Dropdown</a> <div class="dropdown-menu" aria-labelledby="dropdown01"> <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
+                    </div> </li> -->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Buscar Eventos" aria-label="Search">
@@ -60,18 +51,16 @@
             </div>
         </nav>
 
-        
-        {% block index %} 
-        {% endblock index %}
-            
+        {% block index %}{% endblock index %}
+
         <div class="container">
-            {% block body %}
-            {% endblock body %}
+            {% block body %}{% endblock body %}
         </div>
-            
+
         <hr>
-        <center><p>&copy; Company 2017-2018</p></center>
-        
+        <center>
+            <p>&copy; Company 2017-2018</p>
+        </center>
 
         <!-- Bootstrap core JavaScript ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

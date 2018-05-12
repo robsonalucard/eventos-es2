@@ -1,50 +1,129 @@
-{% extends "base.html" %} {% load widget_tweaks %}
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
 <div class="row">
     {% block body %}
-    <p>
-        <center>
-            <h1>Novo Evento</h1>
-        </center>
-    </p>
+        <script type="text/javascript">
+            function mascaraData(val) {
+                var pass = val.value;
+                var expr = /[0123456789]/;
 
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="{{ form.titulo.id_for_label }}">Título</label>
-            {{ form.titulo|add_class:"form-control"|attr:'autofocus'}}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.local.id_for_label }}">Local</label>
-            {{ form.local|add_class:"form-control" }}
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="{{ form.uf.id_for_label }}">UF</label>
-                {{ form.uf|add_class:"form-control" }}
+                for (i = 0; i < pass.length; i++) {
+                    // charAt -> retorna o caractere posicionado no índice especificado
+                    var lchar = val.value.charAt(i);
+                    var nchar = val.value.charAt(i + 1);
+
+                    if (i == 0) {
+                        // search -> retorna um valor inteiro, indicando a posição do inicio da primeira ocorrência de expReg dentro de instStr. Se nenhuma ocorrencia for encontrada o método retornara -1 instStr.search(expReg);
+                        if ((lchar.search(expr) != 0) || (lchar > 3)) {
+                            val.value = "";
+                        }
+
+                    } else if (i == 1) {
+
+                        if (lchar.search(expr) != 0) {
+                            // substring(indice1,indice2) indice1, indice2 -> será usado para delimitar a string
+                            var tst1 = val.value.substring(0, (i));
+                            val.value = tst1;
+                            continue;
+                        }
+
+                        if ((nchar != '/') && (nchar != '')) {
+                            var tst1 = val.value.substring(0, (i) + 1);
+
+                            if (nchar.search(expr) != 0) 
+                                var tst2 = val.value.substring(i + 2, pass.length);
+                            else 
+                                var tst2 = val.value.substring(i + 1, pass.length);
+                            
+                            val.value = tst1 + '/' + tst2;
+                        }
+
+                    } else if (i == 4) {
+
+                        if (lchar.search(expr) != 0) {
+                            var tst1 = val.value.substring(0, (i));
+                            val.value = tst1;
+                            continue;
+                        }
+
+                        if ((nchar != '/') && (nchar != '')) {
+                            var tst1 = val.value.substring(0, (i) + 1);
+
+                            if (nchar.search(expr) != 0) 
+                                var tst2 = val.value.substring(i + 2, pass.length);
+                            else 
+                                var tst2 = val.value.substring(i + 1, pass.length);
+                            
+                            val.value = tst1 + '/' + tst2;
+                        }
+                    }
+
+                    if (i >= 6) {
+                        if (lchar.search(expr) != 0) {
+                            var tst1 = val.value.substring(0, (i));
+                            val.value = tst1;
+                        }
+                    }
+                }
+
+                if (pass.length > 10) 
+                    val.value = val.value.substring(0, 10);
+                return true;
+            }
+        </script>
+        <p>
+            <center>
+                <h1>Evento</h1>
+            </center>
+        </p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.titulo.id_for_label }}">Título</label>
+                {{ form.titulo|add_class:"form-control"|attr:"autofocus" }}
             </div>
-            <div class="form-group col-md-6">
-                <label for="{{ form.cidade.id_for_label }}">Cidade</label>
-                {{ form.cidade|add_class:"form-control" }}
+            <div class="form-group">
+                <label for="{{ form.local.id_for_label }}">Local</label>
+                {{ form.local|add_class:"form-control" }}
             </div>
-        </div>
-        <div class="form-group">
-            <label for="{{ form.descricao.id_for_label }}">Descrição</label>
-            {{ form.descricao|add_class:"form-control" }}
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="{{ form.data_inicial.id_for_label }}">Data Inicial</label>
-                <input type="date" name="data_inicial" class="form-control" required id="data_inicial">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="{{ form.uf.id_for_label }}">UF</label>
+                    {{ form.uf|add_class:"form-control" }}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="{{ form.cidade.id_for_label }}">Cidade</label>
+                    {{ form.cidade|add_class:"form-control" }}
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="{{ form.data_final.id_for_label }}">Data Final</label>
-                <input type="date" name="data_final" class="form-control" required id="data_final">
+            <div class="form-group">
+                <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+                {{ form.descricao|add_class:"form-control" }}
             </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-        </div>
-    </form>
+
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="{{ form.data_inicial.id_for_label }}">Data Inicial</label>
+                    {{ form.data_inicial|add_class:"form-control"|attr:"title:Data Inicial"|attr:"placeholder:dd/mm/aaaa"|attr:"maxlength:10"|attr:"onkeypress:mascaraData( this )" }}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="{{ form.data_final.id_for_label }}">Data Final</label>
+                    {{ form.data_final|add_class:"form-control"|attr:"title:Data Final"|attr:"placeholder:dd/mm/aaaa"|attr:"maxlength:10"|attr:"onkeypress:mascaraData( this )" }}
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
 
     {% endblock body %}
 </div>
