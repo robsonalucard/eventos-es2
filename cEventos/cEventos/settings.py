@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'cEventos.eventos',
     'cEventos.core',
+    'cEventos.accounts',
 ]
 
 MIDDLEWARE = [
