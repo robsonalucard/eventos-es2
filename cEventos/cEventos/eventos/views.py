@@ -20,7 +20,7 @@ def novo_evento(request):
             if compara_datas(f.data_inicial, f.data_final):
                 messages.error(
                     request, 'Data Final deve ser posterior ou igual à Data Inicial.')
-                return render(request, 'eventos/novo_evento.html')
+                return render(request, 'eventos/novo_evento.html', {'form': form})
             else:
                 f.save()
             return redirect('eventos:lista_eventos')
