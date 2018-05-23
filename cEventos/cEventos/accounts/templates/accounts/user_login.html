@@ -1,0 +1,56 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{% static 'img/wolf.ico' %}">
+
+        <title>Login</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <form class="form-signin" method="post">
+                <a href="/">
+                    <div class="text-center">
+                        <img class="mb-4" src="{% static 'img/wolf.ico' %}" alt="" width="72" height="72">
+                    </div>
+                </a>
+                {% csrf_token %}
+                <h2 class="form-signin-heading" align="center">Faça login</h2>
+                {% if messages %}
+                    <div class="alert-success" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                    <p></p>
+                {% endif %}
+                <label for="username" class="sr-only">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Informe o usuario" required="required" autofocus="autofocus">
+                <label for="password" class="sr-only">Senha</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Informe a senha do ususario" required="required">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                <a href="{% url 'accounts:add_user' %}" class="btn btn-lg btn-info btn-block">Não tem cadastro?</a>
+            </form>
+
+        </div>
+    </body>
+</html>

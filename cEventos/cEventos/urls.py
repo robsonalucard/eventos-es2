@@ -18,9 +18,11 @@ from django.contrib import admin
 
 from cEventos.core import views
 from cEventos.eventos import urls as eventos_urls
+from cEventos.accounts import urls as accounts_urls
 
 urlpatterns = [
     url(r'^$', views.home, name='core'),
+    url(r'^accounts/', include(accounts_urls, namespace='accounts')),
     url(r'^eventos/', include(eventos_urls, namespace='eventos')),
     url(r'^admin/', admin.site.urls),
 ]
