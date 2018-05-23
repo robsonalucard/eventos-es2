@@ -39,3 +39,8 @@ def user_login(request):
         else:
             messages.error(request, 'Usuario ou senha invalido.')
     return render(request, 'accounts/user_login.html')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('core')
