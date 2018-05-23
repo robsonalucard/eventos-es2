@@ -16,7 +16,7 @@ def add_user(request):
             u.set_password(u.password)
             u.save()
             messages.success(request, 'Usuário criado com sucesso. Realize login para acessar sua conta!!')
-            return render(request, 'accounts/user_login.html')
+            return redirect('accounts:user_login')
         else:
             messages.error(
                 request, form.errors)
