@@ -28,11 +28,10 @@
         <div class="container">
 
             <form class="form-signin" method="post">
-                <a href="/">
-                    <div class="text-center">
-                        <img class="mb-4" src="{% static 'img/wolf.ico' %}" alt="" width="72" height="72">
-                    </div>
-                </a>
+                <div class="text-center">
+                    <a href="{% url 'core' %}"><img src="{% static "img/wolf.ico" %}" alt="lf" width="72" height="72"></a>
+                </div>
+                <p></p>
                 {% csrf_token %}
                 <h2 class="form-signin-heading" align="center">Faça login</h2>
                 {% if messages %}
