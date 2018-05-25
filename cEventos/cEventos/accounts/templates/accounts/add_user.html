@@ -36,7 +36,8 @@
                 <input type="password" name="password" maxlength="128" required="required" id="id_password" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <a href="{% url 'accounts:user_login' %}" class="btn btn-primary" role="button">Cancelar</a>
+            <!--BOTAO DE VOLTAR PARA PAGINA ANTERIOR-->
+            <input type="button" value="Voltar" onclick="history.back(-1)" class="btn btn-primary" />
         </form>
     {% endblock body %}
 </div>
