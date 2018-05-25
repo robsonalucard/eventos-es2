@@ -47,7 +47,7 @@
                         <p>&nbsp&nbsp</p>
                         <ul class="nav navbar-nav navbar-right">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default">{{ user.get_full_name|default:user.username }}</button>
+                                <button type="button" class="btn btn-default">{{ user.username|default:user.username }}</button>
                                 <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
@@ -60,9 +60,13 @@
                         </ul>
                     {% else %}
                         <!-- AJEITAR ESSE BOTAO!!!!!!!-->
-                        <div align="right">
-                            <a href="{% url 'accounts:user_login' %}" class="btn btn-primary" role="button">Entrar</a>
-                        </div>
+                        <ul class="navbar-nav mr-auto"></ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <div padding-right="30px" align="right">
+                                <a href="{% url 'accounts:user_login' %}" class="btn btn-primary" role="button">Entrar</a>
+                                <a href="{% url 'accounts:add_user' %}" class="btn btn-primary" role="button">Cadastrar-se</a>
+                            </div>
+                        </ul>
                     {% endif %}
                 </div>
             </nav>

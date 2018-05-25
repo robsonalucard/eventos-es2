@@ -17,26 +17,26 @@
             {% endif %}
             <div class="form-group">
                 <label for="{{ form.first_name.id_for_label }}">Nome</label>
-                {{ form.first_name|add_class:'form-control'|attr:'autofocus' }}
+                {{ form.first_name|add_class:'form-control'|attr:'autofocus'|attr:'required' }}
             </div>
             <div class="form-group">
                 <label for="{{ form.last_name.id_for_label }}">Sobrenome</label>
-                {{ form.last_name|add_class:'form-control' }}
+                {{ form.last_name|add_class:'form-control'|attr:'required' }}
             </div>
             <div class="form-group">
                 <label for="{{ form.email.id_for_label }}">E-mail</label>
-                {{ form.email|add_class:'form-control'|attr:'type:email' }}
+                {{ form.email|add_class:'form-control'|attr:'type:email'|attr:'required' }}
             </div>
             <div class="form-group">
                 <label for="{{ form.username.id_for_label }}">Usuário</label>
-                {{ form.username|add_class:'form-control' }}
+                {{ form.username|add_class:'form-control'|attr:'required' }}
             </div>
             <div class="form-group">
                 <label for="{{ form.password.id_for_label }}">Senha</label>
                 <input type="password" name="password" maxlength="128" required="required" id="id_password" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <a href="{% url 'accounts:user_login' %}">Fazer login</a>
+            <a href="{% url 'accounts:user_login' %}" class="btn btn-primary" role="button">Cancelar</a>
         </form>
     {% endblock body %}
 </div>
