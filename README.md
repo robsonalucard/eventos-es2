@@ -10,9 +10,9 @@ Trabalho de Engenharia de Software 2 criação de uma site de buscar de eventos 
 * Instalação
     * Usando pip
         >pip install virtualenvwrapper-win
-* Criação do Ambiente Virtual 
+* Criação do Ambiente Virtual
 	>mkvirtualenv [Nome do Ambiente]
-* Ativação do Ambiente Virtual 
+* Ativação do Ambiente Virtual
 	>workon [Nome do Ambiente]
 * Documentação Completa em:
 	* [Documentação Virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper-win)
