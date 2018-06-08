@@ -45,3 +45,17 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('core')
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+        else:
+            messages.error(request, 'Não foi possível alterar sua senha!')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {'form': form})
