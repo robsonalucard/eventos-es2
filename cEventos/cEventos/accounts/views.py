@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash, get_user
+from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -27,6 +27,23 @@ def add_user(request):
     return render(request, 'accounts/add_user.html', {'form': form})
 
 
+@login_required
+def edit_user(request):
+    form = UserChangeForm(request.POST, instance=user)
+    if form.is_valid():
+        user=form.save()
+        messages.success(request,'Cadastro atualizado.')
+        return redirect('accounts:user_profile')
+    else:
+        messages.error(
+            request, form.errors)
+        return render(request, 'accounts/edit_user.html', {'form': form})
+
+@login_required
+def user_profile(request):
+    return render(request, 'accounts/user_profile.html')
+
+
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -42,6 +59,7 @@ def user_login(request):
     return render(request, 'accounts/user_login.html')
 
 
+@login_required
 def user_logout(request):
     logout(request)
     return redirect('core')

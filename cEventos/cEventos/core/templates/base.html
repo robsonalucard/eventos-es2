@@ -47,11 +47,14 @@
                         <p>&nbsp&nbsp</p>
                         <ul class="nav navbar-nav navbar-right">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default">{{ user.username|default:user.username }}</button>
+                                <a href="{% url 'accounts:user_profile' %}">
+                                    <button type="button" class="btn btn-default">{{ user.username|default:user.username }}</button>
+                                </a>
                                 <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{% url 'accounts:edit_user' %}">Editar cadastro</a>
                                     <a class="dropdown-item" href="{% url 'accounts:change_password' %}">Alterar senha</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'accounts:user_logout' %}">Sair</a>

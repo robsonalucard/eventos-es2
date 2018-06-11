@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<div class="row">
+    {% block body %}
+        <p></p>
+        <center>
+            <h1>Perfil</h1>
+        </center>
+        <div align="right">
+            <a href="{% url 'accounts:edit_user' %}" class="btn btn-primary" role="button">Editar perfil</a>
+        </div>
+        <p></p>
+        <ul class="list-group list-group-flush">
+            <p></p>
+            <li class="list-group-item">
+                <strong>Nome completo:</strong>
+                {{ user.first_name }}
+                {{ user.last_name }}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>E-mail:</strong>
+                {{user.email}}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>Usuário:</strong>
+                {{user.username}}</li>
+            <p></p>
+        </ul>
+
+    {% endblock body %}
+</div>
