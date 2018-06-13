@@ -12,6 +12,13 @@
             <a href="{% url 'accounts:edit_user' %}" class="btn btn-primary" role="button">Editar perfil</a>
         </div>
         <p></p>
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
         <ul class="list-group list-group-flush">
             <p></p>
             <li class="list-group-item">

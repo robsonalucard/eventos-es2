@@ -5,7 +5,7 @@ from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .forms import UserForm
+from .forms import UserForm, UserFormUpdate
 
 
 def add_user(request):
@@ -29,15 +29,20 @@ def add_user(request):
 
 @login_required
 def edit_user(request):
-    form = UserChangeForm(request.POST, instance=user)
-    if form.is_valid():
-        user=form.save()
-        messages.success(request,'Cadastro atualizado.')
-        return redirect('accounts:user_profile')
+    if request.method == 'POST':
+        form = UserFormUpdate(data=request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Cadastro atualizado.')
+            return redirect('accounts:user_profile')
+        else:
+            messages.error(
+                request, form.errors)
+            return render(request, 'accounts/add_user.html', {'form': form})
     else:
-        messages.error(
-            request, form.errors)
-        return render(request, 'accounts/edit_user.html', {'form': form})
+        form = UserFormUpdate(instance=request.user)
+    return render(request, 'accounts/add_user.html', {'form': form})
+
 
 @login_required
 def user_profile(request):
