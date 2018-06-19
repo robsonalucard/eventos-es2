@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 
 from .forms import EventoForm
 from .models import Evento
 
-# Create your views here.
 
-
+@login_required
 def lista_eventos(request):
     eventos = Evento.objects.all()
     return render(request, 'eventos/lista_eventos.html', {'eventos': eventos})
 
 
+@login_required
 def novo_evento(request):
     if request.method == 'POST':
         form = EventoForm(request.POST)
@@ -22,6 +23,7 @@ def novo_evento(request):
                     request, 'Data Final deve ser posterior ou igual à Data Inicial.')
                 return render(request, 'eventos/novo_evento.html', {'form': form})
             else:
+                f.user = request.user
                 f.save()
             return redirect('eventos:lista_eventos')
         else:
@@ -33,6 +35,7 @@ def novo_evento(request):
     return render(request, 'eventos/novo_evento.html', {'form': form})
 
 
+@login_required
 def editar_evento(request, id_evento):
     evento = get_object_or_404(Evento, id=id_evento)
     if request.method == 'POST':
