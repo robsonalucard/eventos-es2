@@ -12,4 +12,4 @@ class EventoForm(forms.ModelForm):
 class InscricaoForm(forms.ModelForm):
     class Meta:
         model = Inscricao
-        fields = '__all__'
+        fields = ('presenca',)

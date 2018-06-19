@@ -3,13 +3,23 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 
 from .forms import EventoForm
-from .models import Evento
+from .models import Evento, Inscricao
 
 
 @login_required
 def lista_eventos(request):
-    eventos = Evento.objects.all()
-    return render(request, 'eventos/lista_eventos.html', {'eventos': eventos})
+    seus_eventos = Evento.objects.filter(organizador=request.user)
+    suas_inscricoes = Inscricao.objects.filter(user=request.user)
+    eventos_inscritos = Evento.objects.filter(
+        id__in=[e.evento.id for e in suas_inscricoes])
+    return render(
+        request,
+        'eventos/lista_eventos.html',
+        {
+            'seus_eventos': seus_eventos,
+            'eventos_inscritos': eventos_inscritos
+        }
+    )
 
 
 @login_required

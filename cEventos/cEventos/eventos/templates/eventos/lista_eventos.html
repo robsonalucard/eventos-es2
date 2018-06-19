@@ -1,45 +1,79 @@
 {% extends "base.html" %}
-<div class="row">
-    {% block body %}
-        <p></p>
-        <center>
-            <h1>Eventos</h1>
-        </center>
-        <div align="right">
-            <a href="{% url 'eventos:novo_evento' %}" class="btn btn-primary" role="button">Novo Evento</a>
-        </div>
-        <p></p>
-        {% if eventos %}
-            <div class="table-responsive">
+{% block body %}
+    <p></p>
+    <h1 class="text-center">Eventos</h1>
+    <p></p>
+    <div class="row">
+        <div class="table-responsive col-sm-6">
+            <center>
+                <h4>Suas Inscrições</h4>
+            </center>
+            <!--<div align="right"> <a href="{% url 'eventos:novo_evento' %}" class="btn btn-primary" role="button">Novo Evento</a> </div>-->
+            <p></p>
+            {% if eventos_inscritos %}
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Título</th>
+                            <th>Evento</th>
                             <th>Local</th>
-                            <th colspan="2" style="text-align:center">Ações</th>
+                            <th style="text-align:center">Ações</th>
                         </tr>
                         <tbody>
-                            {% for e in eventos %}
+                            {% for i in eventos_inscritos %}
                                 <tr>
                                     <td>
-                                        {{e.titulo}}
+                                        {{ i.titulo }}
                                     </td>
                                     <td>
-                                        {{ e.local }}
+                                        {{ i.local }}
                                     </td>
                                     <td>
-                                        <a href="{% url 'eventos:editar_evento' e.id %}" class="btn btn-info btn-xs">Editar</a>
+                                        <a href="{% url 'eventos:editar_evento' i.id %}" class="btn btn-info btn-xs">Editar</a>
                                     </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </thead>
                 </table>
-            </div>
-        {% else %}
+            {% else %}
+                <h5 class="text-center">Sem Inscrições</h5>
+            {% endif %}
+        </div>
+        <div class="table-responsive col-sm-6">
             <center>
-                <h4>Sem Eventos</h4>
+                <h4>Seus Eventos</h4>
             </center>
-        {% endif %}
-    {% endblock body %}
-</div>
+            <div align="right">
+                <a href="{% url 'eventos:novo_evento' %}" class="btn btn-primary" role="button">Novo Evento</a>
+            </div>
+            <p></p>
+            {% if seus_eventos %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>Evento</th>
+                        <th>Local</th>
+                        <th style="text-align:center">Ações</th>
+                    </tr>
+                    <tbody>
+                        {% for i in seus_eventos %}
+                            <tr>
+                                <td>
+                                    {{ i.titulo }}
+                                </td>
+                                <td>
+                                    {{ i.local }}
+                                </td>
+                                <td>
+                                    <a href="{% url 'eventos:editar_evento' i.id %}" class="btn btn-info btn-xs">Editar Evento</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p></p>
+                <h5 class="text-center">Sem eventos cadastrados</h5>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}
