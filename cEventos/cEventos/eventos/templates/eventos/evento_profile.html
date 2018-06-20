@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block body %}
+    <p></p>
+    <h1 class="text-center">Evento</h1>
+    <h3 class="text-center text-success">{{ evento.titulo }}</h3>
+    {% if user.id == evento.organizador.id %}
+        <div align="right">
+            <a href="{% url 'eventos:editar_evento' evento.id %}" class="btn btn-primary" role="button">Editar Evento</a>
+        </div>
+    {% endif %}
+    <p></p>
+    <div class="row">
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <ul class="list-group col-12">
+            <p></p>
+            <li class="list-group-item">
+                <strong>Nome do Evento:</strong>
+                {{ evento.titulo }}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>Local:</strong>
+                {{ evento.local }}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>Cidade - UF:</strong>
+                {{ evento.cidade }}
+                -
+                {{ evento.uf }}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>Descrição:</strong>
+                {{ evento.descricao }}</li>
+            <p></p>
+            <li class="list-group-item  ">
+                <strong>Data Inicial:</strong>
+                {{ evento.data_inicial }}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>Data Final:</strong>
+                {{ evento.data_final }}</li>
+            <p></p>
+            <li class="list-group-item">
+                <strong>Organizador:</strong>
+                {{ evento.organizador.first_name }}
+                {{ evento.organizador.last_name }}</li>
+            <p></p>
+        </ul>
+    </div>
+{% endblock body %}

@@ -73,11 +73,15 @@
             }
         </script>
         <p>
-            <center>
-                <h1>Evento</h1>
-            </center>
+            <h1 class="text-center">Evento</h1>
         </p>
-
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
         <form action="" method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -102,14 +106,6 @@
                 <label for="{{ form.descricao.id_for_label }}">Descrição</label>
                 {{ form.descricao|add_class:"form-control" }}
             </div>
-
-            {% if messages %}
-                <div class="alert alert-danger" role="alert">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                </div>
-            {% endif %}
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="{{ form.data_inicial.id_for_label }}">Data Inicial</label>

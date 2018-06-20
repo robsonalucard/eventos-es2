@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 
 from .forms import EventoForm
-from .models import Evento, Inscricao
+from .models import Evento, Inscricao, User
 
 
 @login_required
@@ -62,6 +62,17 @@ def editar_evento(request, id_evento):
     else:
         form = EventoForm(instance=evento)
     return render(request, 'eventos/novo_evento.html', {'form': form})
+
+
+def evento_profile(request, id_evento):
+    evento = get_object_or_404(Evento, id=id_evento)
+    return render(
+        request,
+        'eventos/evento_profile.html',
+        {
+            'evento': evento
+        }
+    )
 
 
 def compara_datas(valor1, valor2):

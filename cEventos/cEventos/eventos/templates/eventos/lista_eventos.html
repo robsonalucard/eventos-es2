@@ -5,10 +5,7 @@
     <p></p>
     <div class="row">
         <div class="table-responsive col-sm-6">
-            <center>
-                <h4>Suas Inscrições</h4>
-            </center>
-            <!--<div align="right"> <a href="{% url 'eventos:novo_evento' %}" class="btn btn-primary" role="button">Novo Evento</a> </div>-->
+            <h4 class="text-center">Suas Inscrições</h4>
             <p></p>
             {% if eventos_inscritos %}
                 <table class="table table-striped">
@@ -16,7 +13,7 @@
                         <tr>
                             <th>Evento</th>
                             <th>Local</th>
-                            <th style="text-align:center">Ações</th>
+                            <th style="text-align:center">Opções</th>
                         </tr>
                         <tbody>
                             {% for i in eventos_inscritos %}
@@ -27,8 +24,8 @@
                                     <td>
                                         {{ i.local }}
                                     </td>
-                                    <td>
-                                        <a href="{% url 'eventos:editar_evento' i.id %}" class="btn btn-info btn-xs">Editar</a>
+                                    <td style="text-align:center">
+                                        <a href="{% url 'eventos:evento_profile' i.id %}" class="btn btn-info btn-xs">Visualizar Evento</a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -40,9 +37,7 @@
             {% endif %}
         </div>
         <div class="table-responsive col-sm-6">
-            <center>
-                <h4>Seus Eventos</h4>
-            </center>
+            <h4 class="text-center">Seus Eventos</h4>
             <div align="right">
                 <a href="{% url 'eventos:novo_evento' %}" class="btn btn-primary" role="button">Novo Evento</a>
             </div>
@@ -52,19 +47,19 @@
                     <tr>
                         <th>Evento</th>
                         <th>Local</th>
-                        <th style="text-align:center">Ações</th>
+                        <th style="text-align:center">Opções</th>
                     </tr>
                     <tbody>
-                        {% for i in seus_eventos %}
+                        {% for e in seus_eventos %}
                             <tr>
                                 <td>
-                                    {{ i.titulo }}
+                                    {{ e.titulo }}
                                 </td>
                                 <td>
-                                    {{ i.local }}
+                                    {{ e.local }}
                                 </td>
-                                <td>
-                                    <a href="{% url 'eventos:editar_evento' i.id %}" class="btn btn-info btn-xs">Editar Evento</a>
+                                <td style="text-align:center">
+                                    <a href="{% url 'eventos:evento_profile' e.id %}" class="btn btn-info btn-xs">Visualizar Evento</a>
                                 </td>
                             </tr>
                         {% endfor %}
