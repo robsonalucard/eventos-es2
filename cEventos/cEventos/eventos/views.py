@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import EventoForm
-from .models import Evento, Inscricao, User
+from .models import Evento, Inscricao
 
 
 @login_required
@@ -28,12 +28,12 @@ def novo_evento(request):
         form = EventoForm(request.POST)
         if form.is_valid():
             f = form.save(commit=False)
+            f.organizador = request.user
             if compara_datas(f.data_inicial, f.data_final):
                 messages.error(
                     request, 'Data Final deve ser posterior ou igual à Data Inicial.')
                 return render(request, 'eventos/novo_evento.html', {'form': form})
             else:
-                f.user = request.user
                 f.save()
             return redirect('eventos:lista_eventos')
         else:
@@ -47,7 +47,7 @@ def novo_evento(request):
 
 @login_required
 def editar_evento(request, id_evento):
-    evento = get_object_or_404(Evento, id=id_evento)
+    evento = get_object_or_404(Evento, id=id_evento, organizador=request.user)
     if request.method == 'POST':
         form = EventoForm(request.POST, instance=evento)
         if form.is_valid():
