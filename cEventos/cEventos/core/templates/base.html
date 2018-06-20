@@ -38,8 +38,9 @@
                                     <span class="sr-only">(current)</span></a>
                             </li>
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Buscar Eventos" aria-label="Search">
+                        <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'eventos:busca_evento' %}">
+                            {% csrf_token %}
+                            <input class="form-control mr-sm-2" type="text" placeholder="Buscar Eventos" aria-label="Search" id="id_busca" name="busca">
                         </form>
                         <p>&nbsp&nbsp</p>
                         <ul class="nav navbar-nav navbar-right">

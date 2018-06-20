@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+<div class="row">
+    {% block body %}
+        <p></p>
+        <h1 class="text-center">Eventos</h1>
+        <p></p>
+        {% if eventos %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Local</th>
+                        <th></th>
+                    </tr>
+                    <tbody>
+                        {% for e in eventos %}
+                            <tr>
+                                <td>
+                                    {{ e.titulo }}
+                                </td>
+                                <td>
+                                    {{ e.local }}
+                                </td>
+                                <td style="text-align:center">
+                                    <a href="{% url 'eventos:evento_profile' e.id %}" class="btn btn-info btn-xs">Visualizar Evento</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
+        {% else %}
+            <h4 class="text-center">Não foram encontrado eventos!</h4>
+        {% endif %}
+    {% endblock body %}
+</div>

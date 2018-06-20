@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models import Q
 
 from .forms import EventoForm
 from .models import Evento, Inscricao
@@ -73,6 +74,13 @@ def evento_profile(request, id_evento):
             'evento': evento
         }
     )
+
+
+def busca_evento(request):
+    id_busca = request.POST.get('busca', '')
+    eventos = Evento.objects.filter(Q(titulo__icontains=id_busca) | Q(
+        local__icontains=id_busca) | Q(cidade__icontains=id_busca) | Q(descricao__icontains=id_busca))
+    return render(request, 'eventos/lista_busca.html', {'eventos': eventos})
 
 
 def compara_datas(valor1, valor2):
