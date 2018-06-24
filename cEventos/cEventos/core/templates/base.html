@@ -60,6 +60,11 @@
                         </ul>
                     {% else %}
                         <ul class="navbar-nav mr-auto"></ul>
+                        <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'eventos:busca_evento' %}">
+                            {% csrf_token %}
+                            <input class="form-control mr-sm-2" type="text" placeholder="Buscar Eventos" aria-label="Search" id="id_busca" name="busca">
+                        </form>
+                        <p>&nbsp&nbsp</p>
                         <ul class="nav navbar-nav navbar-right">
                             <div padding-right="30px" align="right">
                                 <a href="{% url 'accounts:user_login' %}" class="btn btn-primary" role="button">Login</a>

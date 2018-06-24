@@ -2,14 +2,16 @@
 <div class="row">
     {% block body %}
         <p></p>
-        <h1 class="text-center">Eventos</h1>
-        <p></p>
         {% if eventos %}
+            <h1 class="text-center">Eventos encontrados
+            </h1>
+            <p></p>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Título</th>
                         <th>Local</th>
+                        <th>Cidade</th>
                         <th></th>
                     </tr>
                     <tbody>
@@ -20,6 +22,9 @@
                                 </td>
                                 <td>
                                     {{ e.local }}
+                                </td>
+                                <td>
+                                    {{ e.cidade }}
                                 </td>
                                 <td style="text-align:center">
                                     <a href="{% url 'eventos:evento_profile' e.id %}" class="btn btn-info btn-xs">Visualizar Evento</a>
