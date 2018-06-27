@@ -11,6 +11,8 @@ urlpatterns = [
         views.evento_profile, name='evento_profile'),
     url(r'^evento-inscricao/(?P<id_evento>[0-9]+)/$',
         views.inscricao_evento, name='inscricao_evento'),
+    url(r'^cancelar-inscricao/(?P<id_evento>[0-9]+)/$',
+        views.cancela_inscricao, name='cancela_inscricao'),
     url(r'^evento_busca/$',
         views.busca_evento, name='busca_evento'),
 ]

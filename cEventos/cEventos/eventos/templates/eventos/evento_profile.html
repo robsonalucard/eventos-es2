@@ -15,7 +15,7 @@
         {% if user.id != evento.organizador.id %}
             {% if inscrito %}
                 <div align="right">
-                    <a href="#" class="btn btn-danger" role="button">Cancelar Inscrição</a>
+                    <a href="{% url 'eventos:cancela_inscricao' evento.id %}" class="btn btn-danger" role="button">Cancelar Inscrição</a>
                 </div>
             {% else %}
                 <div align="right">
@@ -31,47 +31,49 @@
             {% for message in messages %}
                 {% if message.level == 20 %}
                     <div class="alert alert-info col" role="alert">
-                    {% elif message.level == 40 %}
-                        <div class="alert alert-danger" role="alert">
-                        {% endif %}
-                        {{ message }}
-                    {% endfor %}
-                </div>
-            {% endif %}
-            <div class="col"></div>
-            <ul class="list-group col-12">
-                <p></p>
-                <li class="list-group-item">
-                    <strong>Nome do Evento:</strong>
-                    {{ evento.titulo }}</li>
-                <p></p>
-                <li class="list-group-item">
-                    <strong>Local:</strong>
-                    {{ evento.local }}</li>
-                <p></p>
-                <li class="list-group-item">
-                    <strong>Cidade - UF:</strong>
-                    {{ evento.cidade }}
-                    -
-                    {{ evento.uf }}</li>
-                <p></p>
-                <li class="list-group-item">
-                    <strong>Descrição:</strong>
-                    {{ evento.descricao }}</li>
-                <p></p>
-                <li class="list-group-item  ">
-                    <strong>Data Inicial:</strong>
-                    {{ evento.data_inicial }}</li>
-                <p></p>
-                <li class="list-group-item">
-                    <strong>Data Final:</strong>
-                    {{ evento.data_final }}</li>
-                <p></p>
-                <li class="list-group-item">
-                    <strong>Organizador:</strong>
-                    {{ evento.organizador.first_name }}
-                    {{ evento.organizador.last_name }}</li>
-                <p></p>
-            </ul>
-        </div>
-    {% endblock body %}
+                    {% elif message.level == 25 %}
+                        <div class="alert alert-success col" role="alert">
+                        {% elif message.level == 40 %}
+                            <div class="alert alert-danger" role="alert">
+                            {% endif %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="col"></div>
+                <ul class="list-group col-12">
+                    <p></p>
+                    <li class="list-group-item">
+                        <strong>Nome do Evento:</strong>
+                        {{ evento.titulo }}</li>
+                    <p></p>
+                    <li class="list-group-item">
+                        <strong>Local:</strong>
+                        {{ evento.local }}</li>
+                    <p></p>
+                    <li class="list-group-item">
+                        <strong>Cidade - UF:</strong>
+                        {{ evento.cidade }}
+                        -
+                        {{ evento.uf }}</li>
+                    <p></p>
+                    <li class="list-group-item">
+                        <strong>Descrição:</strong>
+                        {{ evento.descricao }}</li>
+                    <p></p>
+                    <li class="list-group-item  ">
+                        <strong>Data Inicial:</strong>
+                        {{ evento.data_inicial }}</li>
+                    <p></p>
+                    <li class="list-group-item">
+                        <strong>Data Final:</strong>
+                        {{ evento.data_final }}</li>
+                    <p></p>
+                    <li class="list-group-item">
+                        <strong>Organizador:</strong>
+                        {{ evento.organizador.first_name }}
+                        {{ evento.organizador.last_name }}</li>
+                    <p></p>
+                </ul>
+            </div>
+        {% endblock body %}

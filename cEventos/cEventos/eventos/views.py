@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from datetime import date
@@ -83,6 +84,7 @@ def evento_profile(request, id_evento):
         else:
             inscrito = False
     else:
+        # ADICIONAR LINK EM MESSAGE NO TEMPLATE
         messages.info(
             request, mark_safe('Para se inscrever, faça <a href="../../../accounts/login-usuario/" class="alert-link">Login</a> ou <a href="../../../accounts/novo-usuario/" class="alert-link">Cadastre-se</a>.'))
         inscrito = False
@@ -104,22 +106,24 @@ def busca_evento(request):
     return render(request, 'eventos/lista_busca.html', {'eventos': eventos})
 
 
+@login_required
 def inscricao_evento(request, id_evento):
     evento = get_object_or_404(Evento, id=id_evento)
-    suas_inscricoes = Inscricao.objects.filter(user=request.user)
-    if evento.organizador != request.user:
-        inscricao = Inscricao(data_inscricao=date.today(),
-                              evento=id_evento, user=request.user)
-        inscricao.save()
-        redirect('eventos:evento_profile', id_evento=id_evento)
-    elif id_evento == [e.evento.id for e in suas_inscricoes]:
-        messages.error(
-            request, 'Você já esta inscrito nesse evento!')
-        return render(request, 'eventos/evento_profile.html')
-    elif evento.organizador == request.user:
-        messages.error(
-            request, 'O organizador do evento não nessicita de inscrição.')
-        return render(request, 'eventos/evento_profile.html')
+    i = Inscricao(data_inscricao=str(date.today()),
+                  evento=evento, user=request.user)
+    i.save()
+    messages.success(request, 'Inscrição realizada com sucesso!')
+    return redirect('eventos:evento_profile', id_evento=id_evento)
+
+
+@login_required
+def cancela_inscricao(request, id_evento):
+    #evento = get_object_or_404(Evento, id=id_evento)
+    i = get_object_or_404(Inscricao, Q(evento=id_evento)
+                          & Q(user=request.user))
+    i.delete()
+    messages.success(request, 'Inscrição cancelada com sucesso!')
+    return redirect('eventos:evento_profile', id_evento=id_evento)
 
 
 def compara_datas(valor1, valor2):
