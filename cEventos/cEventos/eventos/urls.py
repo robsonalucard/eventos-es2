@@ -13,6 +13,8 @@ urlpatterns = [
         views.inscricao_evento, name='inscricao_evento'),
     url(r'^cancelar-inscricao/(?P<id_evento>[0-9]+)/$',
         views.cancela_inscricao, name='cancela_inscricao'),
+    url(r'^comprovante/(?P<id_evento>[0-9]+)/$',
+        views.comprovante_inscricao, name='comprovante_inscricao'),
     url(r'^evento_busca/$',
         views.busca_evento, name='busca_evento'),
 ]

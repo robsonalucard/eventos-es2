@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from datetime import date
 from django.utils.safestring import mark_safe
+from django.contrib.auth.models import User
 
 from .forms import EventoForm
 from .models import Evento, Inscricao
@@ -119,11 +120,26 @@ def inscricao_evento(request, id_evento):
 @login_required
 def cancela_inscricao(request, id_evento):
     #evento = get_object_or_404(Evento, id=id_evento)
-    i = get_object_or_404(Inscricao, Q(evento=id_evento)
-                          & Q(user=request.user))
+    i = get_object_or_404(Inscricao, evento=id_evento, user=request.user)
     i.delete()
     messages.success(request, 'Inscrição cancelada com sucesso!')
     return redirect('eventos:evento_profile', id_evento=id_evento)
+
+
+def comprovante_inscricao(request, id_evento):
+    inscricao = get_object_or_404(
+        Inscricao, evento=id_evento, user=request.user)
+    evento = get_object_or_404(Evento, id=id_evento)
+    user = get_object_or_404(User, id=request.user.id)
+    return render(
+        request,
+        'eventos/comprovante.html',
+        {
+            'inscricao': inscricao,
+            'evento': evento,
+            'user': user,
+        }
+    )
 
 
 def compara_datas(valor1, valor2):

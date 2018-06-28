@@ -16,6 +16,7 @@
             {% if inscrito %}
                 <div align="right">
                     <a href="{% url 'eventos:cancela_inscricao' evento.id %}" class="btn btn-danger" role="button">Cancelar Inscrição</a>
+                    <a href="{% url 'eventos:comprovante_inscricao' evento.id %}" class="btn btn-info" role="button">Gerar Comprovante</a>
                 </div>
             {% else %}
                 <div align="right">
