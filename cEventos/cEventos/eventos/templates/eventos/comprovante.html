@@ -27,18 +27,21 @@
 
         <div class="container">
 
-            <div class="text-center">
+            <div class="text-center col-sm-12">
                 <img src="{% static "img/wolf.ico" %}" alt="" width="72" height="72">
                 <h2>Caça Eventos</h2>
                 <h3>Comprovante de Inscrição</h3>
             </div>
 
-            <h4>Comprovamos que, em
-                {{inscricao.data_inscricao}},
-                {{ user.first_name }}
-                {{ user.last_name }}
-                se inscreveu no evento "{{evento.titulo}}", a ser realizado na data
-                {{evento.data_inicial}}.</h4>
+            <div class="col-sm-12">
+                <h4>Comprovamos que, em
+                    <u>{{inscricao.data_inscricao}}</u>,
+                    <u>{{ user.first_name }}
+                        {{ user.last_name }}</u>
+                    se inscreveu no evento
+                    <u>"{{evento.titulo}}"</u>, a ser realizado na data
+                    <u>{{evento.data_inicial}}</u>.</h4>
+            </div>
 
             <input type="button" value="Voltar" onclick="history.back(-1)" class="btn btn-primary"/>
         </div>
